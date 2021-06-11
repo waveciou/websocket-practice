@@ -28,7 +28,7 @@ io.on('connection', socket => {
     // Broadcast when a user connects
     socket.broadcast.to(user.room).emit(
       'message',
-      formatMessages(botName, `${user.username} has JOINED the chat`)
+      formatMessages(botName, `${user.username} 已經加入聊天室`)
     );
 
     // Send users and room info
@@ -55,7 +55,7 @@ io.on('connection', socket => {
     if (user) {
       io.to(user.room).emit(
         'message',
-        formatMessages(botName, `${user.username} has LEFT the chat`)
+        formatMessages(botName, `${user.username} 已經離開聊天室`)
       );
 
       // Send users and room info
