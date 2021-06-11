@@ -1,7 +1,7 @@
-const chatForm = document.getElementById('chat-form');
-const chatMessages = document.querySelector('.chat-messages');
-const roomName = document.getElementById('room-name');
-const userList = document.getElementById('users');
+const CHAT_FORM = document.getElementById('chat-form');
+const CHAT_MESSAGES = document.querySelector('.chat-messages');
+const ROOM_NAME = document.getElementById('room-name');
+const USER_LIST = document.getElementById('users');
 
 // Get username and room from URL
 const { username, room } = Qs.parse(location.search, {
@@ -25,11 +25,11 @@ socket.on('message', message => {
   outputMessage(message);
 
   // Scroll down
-  chatMessages.scrollTop = chatMessages.scrollHeight;
+  CHAT_MESSAGES.scrollTop = CHAT_MESSAGES.scrollHeight;
 });
 
 // Message submit
-chatForm.addEventListener('submit', e => {
+CHAT_FORM.addEventListener('submit', e => {
   e.preventDefault();
 
   // Get message text
@@ -52,17 +52,17 @@ function outputMessage(message) {
     <p class="text">${message.text}</p>
   `;
 
-  chatMessages.appendChild(dom);
+  CHAT_MESSAGES.appendChild(dom);
 }
 
 // Add room name to DOM
 function outputRoomName(room) {
-  roomName.innerText = room;
+  ROOM_NAME.innerText = room;
 }
 
 // Add users to DOM
 function outputUsers(users) {
-  userList.innerHTML = `
+  USER_LIST.innerHTML = `
     ${users.map(user => `<li>${user.username}</li>`).join('')}
   `;
 }
